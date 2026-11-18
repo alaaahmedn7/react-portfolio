@@ -1,16 +1,66 @@
-# React + Vite
+# Alaa Ahmed Noman | Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A personal portfolio website built with React.js to showcase my skills, academic background, achievements, certificates, and projects as an Information Technology student aspiring to become a Software Engineer.
 
-Currently, two official plugins are available:
+## About the Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This portfolio introduces me, highlights my technical skills and academic achievements, and showcases the projects I have worked on. It also provides a way to contact me.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Responsive design for different screen sizes.
+- Dark and light mode.
+- Projects showcase.
+- Skills section.
+- Education and academic achievements.
+- Certificates gallery.
+- Contact form with validation.
+- React Router for navigation.
 
-## Expanding the Oxlint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- React.js
+- Vite
+- JavaScript
+- HTML5
+- CSS3
+- React Router
+- EmailJS
+
+## Installation and Setup
+
+Clone the repository:
+
+```bash
+git clone https://github.com/alaaahmedn7/react-portfolio.git```
+
+Navigate to the project directory:
+
+```bash
+cd react-portfolio
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+## Build
+
+To build the project for production:
+
+```bash
+npm run build
+```
+
+## Contact
+
+Alaa Ahmed Noman  
+Information Technology Student | Aspiring Software Engineer
