@@ -2,7 +2,12 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import logo from './assets/logo.png';
 import emailjs from '@emailjs/browser';
+import aboutImage from './assets/About-illustration.png';
+import certificate1 from './assets/certificate-1.jpg';
+import certificate2 from './assets/certificate-2.jpg';
+import certificate3 from './assets/certificate-3.jpg';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -217,8 +222,7 @@ function App() {
 
   <div className="about-image">
     <img
-      src="/src/assets/About-illustration.png"
-      alt="A student wearing a hijab and working on a laptop"
+src={aboutImage}      alt="A student wearing a hijab and working on a laptop"
     />
   </div>
   </section>
@@ -262,8 +266,7 @@ function App() {
 
     <div className="certificate-card">
       <img
-  src="/src/assets/certificate-1.jpg"
-  alt="EL097 Certificate"
+src={certificate1}  alt="EL097 Certificate"
   onClick={() => setSelectedCertificate("/src/assets/certificate-1.jpg")}
 />
       <h3>Intensive English Language Course</h3>
@@ -273,19 +276,20 @@ function App() {
 
     <div className="certificate-card">
       <img
-  src="/src/assets/certificate-2.jpg"
+ src={certificate2}
   alt="EL097 Certificate"
-  onClick={() => setSelectedCertificate("/src/assets/certificate-3.jpg")}
-/>
+onClick={() => setSelectedCertificate(certificate2)}/>
       <h3>Intensive English Language Course</h3>
       <p>EL098R · 120 Hours</p>
       <span>November 2023 – January 2024</span>
     </div>
 
     <div className="certificate-card">
-      <a href="/src/assets/certificate-3.jpg" target="_blank">
-        <img src="/src/assets/certificate-3.jpg" alt="EL099 Certificate" />
-      </a>
+      <img
+    src={certificate3}
+    alt="EL099 Certificate"
+    onClick={() => setSelectedCertificate(certificate3)}
+    />
       <h3>Intensive English Language Course</h3>
       <p>EL099 · 120 Hours</p>
       <span>January – March 2024</span>
