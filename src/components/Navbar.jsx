@@ -1,75 +1,63 @@
-    import logo from '../assets/logo.png';
+import logo from '../assets/logo.png';
+import { Link, useLocation } from 'react-router-dom';
 
-    function Navbar({ activeSection, setActiveSection, isDarkMode, setIsDarkMode }) {
-    return (
-        <nav className="navbar">
-        <div className="logo">
-            <img src={logo} alt="Alaa Logo" />
-        </div>
+function Navbar({ activeSection, setActiveSection, isDarkMode, setIsDarkMode }) {
+const location = useLocation();
 
-        <ul className="nav-links">
-            <li>
-            <a href="#home" className={activeSection === 'home' ? 'active' : ''}>
-                Home
-            </a>
-            </li>
+const sectionLink = (section) =>
+    location.pathname === '/' ? `#${section}` : `/#${section}`;
 
-            <li>
-            <a href="#about" className={activeSection === 'about' ? 'active' : ''}>
-                About
-            </a>
-            </li>
+return (
+    <nav className="navbar">
+    <div className="logo">
+        <Link to="/">
+        <img src={logo} alt="Alaa Logo" />
+        </Link>
+    </div>
 
-            <li>
-            <a href="#education" className={activeSection === 'education' ? 'active' : ''}>
-                Education
-            </a>
-            </li>
-
-            <li>
-            <a href="#certificates" className={activeSection === 'certificates' ? 'active' : ''}>
-                Certificates
-            </a>
-            </li>
-
-            <li>
-            <a href="#skills" className={activeSection === 'skills' ? 'active' : ''}>
-                Skills
-            </a>
-            </li>
-
-            <li>
-            <a href="#projects" className={activeSection === 'projects' ? 'active' : ''}>
-                Projects
-            </a>
-            </li>
-
-            <li>
-            <a href="#achievements" className={activeSection === 'achievements' ? 'active' : ''}>
-                Achievements
-            </a>
-            </li>
-
-            <li>
-            <a
-                href="#contact"
-                className={activeSection === 'contact' ? 'active' : ''}
-                onClick={() => setActiveSection('contact')}
-            >
-                Contact
-            </a>
-            </li>
-        </ul>
-
-        <button
-            className="theme-toggle"
-            onClick={() => setIsDarkMode(!isDarkMode)}
-            aria-label="Toggle theme"
+    <ul className="nav-links">
+        <li>
+        <Link
+        to="/"
+        className={location.pathname === '/' && activeSection === 'home' ? 'active' : ''}
+        onClick={(e) => {
+            if (location.pathname === '/') {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }}
         >
-            {isDarkMode ? '☀️' : '🌙'}
-        </button>
-        </nav>
-    );
-    }
+        Home
+        </Link>
+        </li>
+<li><Link to={sectionLink('about')}>About</Link></li>
+<li><Link to={sectionLink('education')}>Education</Link></li>
+<li><Link to={sectionLink('certificates')}>Certificates</Link></li>
+<li><Link to={sectionLink('skills')}>Skills</Link></li>
 
-    export default Navbar;
+        <li>
+        <Link to="/projects" className={location.pathname === '/projects' ? 'active' : ''}>
+            Projects
+        </Link>
+        </li>
+
+<li><Link to={sectionLink('achievements')}>Achievements</Link></li>
+        <li>
+        <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>
+            Contact
+        </Link>
+        </li>
+    </ul>
+
+    <button
+        className="theme-toggle"
+        onClick={() => setIsDarkMode(!isDarkMode)}
+        aria-label="Toggle theme"
+    >
+        {isDarkMode ? '☀️' : '🌙'}
+    </button>
+    </nav>
+);
+}
+
+export default Navbar;

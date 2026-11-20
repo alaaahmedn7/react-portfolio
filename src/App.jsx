@@ -9,23 +9,32 @@ import certificate3 from './assets/certificate-3.jpg';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import Navbar from './components/Navbar';
 import ProjectCard from './components/ProjectCard';
+import Footer from './components/Footer';
+import Hero from './components/Hero';
+import Skills from './components/Skills';
+import { useLocation } from 'react-router-dom';
+
 
 
 function App() {
-  const [loading, setLoading] = useState(true);
-  const [activeSection, setActiveSection] = useState('home');
+const [loading, setLoading] = useState(
+  () => !sessionStorage.getItem('portfolioVisited')
+);  const [activeSection, setActiveSection] = useState('home');
   const [showTopButton, setShowTopButton] = useState(false);
   const [selectedCertificate, setSelectedCertificate] = useState(null);
   const [contactStatus, setContactStatus] = useState('');
   const [isDarkMode, setIsDarkMode] = useState(true);
   // Splash Screen Timer
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+  if (!loading) return;
 
-    return () => clearTimeout(timer);
-  }, []);
+  const timer = setTimeout(() => {
+    sessionStorage.setItem('portfolioVisited', 'true');
+    setLoading(false);
+  }, 3000);
+
+  return () => clearTimeout(timer);
+}, [loading]);
 
   // Active Navigation Section
   useEffect(() => {
@@ -65,6 +74,22 @@ function App() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  const location = useLocation();
+
+useEffect(() => {
+  if (location.pathname === '/' && location.hash && !loading) {
+    const sectionId = location.hash.substring(1);
+
+    const timer = setTimeout(() => {
+      document.getElementById(sectionId)?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }
+}, [location, loading]);
   if (loading) {
     return (
       <div className="splash-screen">
@@ -97,7 +122,7 @@ function App() {
   isDarkMode={isDarkMode}
   setIsDarkMode={setIsDarkMode}
 />
-      <section className="hero" id="home">
+      {/* <section className="hero" id="home">
         <div className="hero-content">
           <h1>
             Hi, I'm <span>Alaa </span> 👩🏻‍💻
@@ -111,7 +136,8 @@ function App() {
           <a href="#projects" className="btn">
             Explore My Work</a>
         </div>
-      </section>
+      </section> */}
+      <Hero />
       <section id="about" className="about-section">
 
   <div className="about-content">
@@ -242,7 +268,7 @@ onClick={() => setSelectedCertificate(certificate2)}/>
 
 </section>
         {/* Skills Section */}
-<section className="skills" id="skills">
+{/* <section className="skills" id="skills">
   <h2>My <span>Skills</span></h2>
   <div className="skills-container">
 
@@ -275,9 +301,10 @@ onClick={() => setSelectedCertificate(certificate2)}/>
 </div>
 
   </div>
-</section>
+</section> */}
+<Skills />
 {/* Projects Section */}
-<section id="projects" className="projects">
+{/* <section id="projects" className="projects">
   <h2>My <span>Projects</span></h2>
 
   <div className="projects-container">
@@ -317,7 +344,7 @@ onClick={() => setSelectedCertificate(certificate2)}/>
       link="https://github.com/alaaahmedn7/school-database-management-system-4."    />
 
   </div>
-</section>
+</section> */}
 
 {/* Achievements Section */}
 <section className="achievements" id="achievements">
@@ -348,7 +375,7 @@ onClick={() => setSelectedCertificate(certificate2)}/>
 
 
 {/* Contact Section */}
-<section className="contact" id="contact">
+{/* <section className="contact" id="contact">
 
   <h2>Get In <span>Touch</span></h2>
 
@@ -433,9 +460,9 @@ onClick={() => setSelectedCertificate(certificate2)}/>
 )}
   </form>
 
-</section>
+</section> */}
 {/* Footer Section */}
-<footer className="footer">
+{/* <footer className="footer">
 
   <div className="footer-content">
 
@@ -471,7 +498,8 @@ onClick={() => setSelectedCertificate(certificate2)}/>
     <p>© 2026 Alaa Ahmed. All Rights Reserved.</p>
   </div>
 
-</footer>
+</footer> */}
+<Footer />
       {showTopButton && (
         <button
           className="back-to-top"
