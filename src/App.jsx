@@ -7,6 +7,8 @@ import certificate1 from './assets/certificate-1.jpg';
 import certificate2 from './assets/certificate-2.jpg';
 import certificate3 from './assets/certificate-3.jpg';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import Navbar from './components/Navbar';
+import ProjectCard from './components/ProjectCard';
 
 
 function App() {
@@ -89,71 +91,12 @@ function App() {
 
   return (
 <div className={`portfolio ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
-      <nav className="navbar">
-        <div className="logo">
-          <img src={logo} alt="Alaa Logo" />
-        </div>
-<ul className="nav-links">
-  <li>
-    <a href="#home" className={activeSection === 'home' ? 'active' : ''}>
-      Home
-    </a>
-  </li>
-
-  <li>
-    <a href="#about" className={activeSection === 'about' ? 'active' : ''}>
-      About
-    </a>
-  </li>
-
-  <li>
-  <a href="#education" className={activeSection === 'education' ? 'active' : ''}>
-    Education
-  </a>
-</li>
-<li>
-  <a href="#certificates"
-    className={activeSection === 'certificates' ? 'active' : ''}>
-    Certificates
-  </a>
-</li>
-
-  <li>
-    <a href="#skills" className={activeSection === 'skills' ? 'active' : ''}>
-      Skills
-    </a>
-  </li>
-
-  <li>
-    <a href="#projects" className={activeSection === 'projects' ? 'active' : ''}>
-      Projects
-    </a>
-  </li>
-
-  <li>
-    <a href="#achievements" className={activeSection === 'achievements' ? 'active' : ''}>
-      Achievements
-    </a>
-  </li>
-
-<li>
-  <a
-    href="#contact"
-    className={activeSection === 'contact' ? 'active' : ''}
-    onClick={() => setActiveSection('contact')}
-  >
-    Contact
-  </a>
-</li></ul>
-<button
-  className="theme-toggle"
-  onClick={() => setIsDarkMode(!isDarkMode)}
-  aria-label="Toggle theme"
->
-  {isDarkMode ? '☀️' : '🌙'}
-</button>
-      </nav>
-
+<Navbar
+  activeSection={activeSection}
+  setActiveSection={setActiveSection}
+  isDarkMode={isDarkMode}
+  setIsDarkMode={setIsDarkMode}
+/>
       <section className="hero" id="home">
         <div className="hero-content">
           <h1>
@@ -253,6 +196,7 @@ src={aboutImage}      alt="A student wearing a hijab and working on a laptop"
 
 
 </section>
+
 {/* Certificates Section */}
 <section className="certificates" id="certificates">
 
@@ -267,8 +211,7 @@ src={aboutImage}      alt="A student wearing a hijab and working on a laptop"
     <div className="certificate-card">
       <img
 src={certificate1}  alt="EL097 Certificate"
-  onClick={() => setSelectedCertificate("/src/assets/certificate-1.jpg")}
-/>
+onClick={() => setSelectedCertificate(certificate1)}/>
       <h3>Intensive English Language Course</h3>
       <p>EL097 · 120 Hours</p>
       <span>September – October 2023</span>
@@ -277,7 +220,7 @@ src={certificate1}  alt="EL097 Certificate"
     <div className="certificate-card">
       <img
  src={certificate2}
-  alt="EL097 Certificate"
+ alt="EL098R Certificate"
 onClick={() => setSelectedCertificate(certificate2)}/>
       <h3>Intensive English Language Course</h3>
       <p>EL098R · 120 Hours</p>
@@ -334,117 +277,76 @@ onClick={() => setSelectedCertificate(certificate2)}/>
   </div>
 </section>
 {/* Projects Section */}
-<section className="projects" id="projects">
+<section id="projects" className="projects">
   <h2>My <span>Projects</span></h2>
 
   <div className="projects-container">
 
-    <div className="project-card">
-      <h3>Taiz Bus</h3>
-      <p>
-    A web-based public transportation project
-    designed to present bus routes, schedules,
-    and transportation information in Taiz city.
-</p>
-      <small>HTML · CSS · JavaScript </small>
-      <a href="https://alaaahmedn1.github.io/alaa-project/"
-      target="_blank" rel="noreferrer">
-        Live Demo
-      </a>
-      <a
-    href="https://github.com/Alaaahmedn1/alaa-project"
-    target="_blank"
-    rel="noreferrer"
-    className="github-btn"
-  >
-  View Code
-</a>
-    </div>
+    <ProjectCard
+      title="Taiz Bus"
+      description="A web-based public transportation project designed to present bus routes, schedules, and transportation information in Taiz city."
+      image={null}
+      link="https://alaaahmedn1.github.io/alaa-project/"
+    />
 
-    <div className="project-card">
-      <h3>StartBuild</h3>
-      <p>
-        An educational platform landing page
-        introducing programming, web development,
-        and database courses.
-      </p>
-      <small>HTML · CSS · JavaScript</small>
-      <a href="https://alaaahmedn7.github.io/landing-page-project/"
-      target="_blank" rel="noreferrer">
-        Live Demo
-      </a>
-      <a
-    href="https://github.com/Alaaahmedn7/landing-page-project"
-    target="_blank"
-    rel="noreferrer"
-    className="github-btn"
-    >
-  View Code
-</a>
-    </div>
+    <ProjectCard
+      title="StartBuild"
+      description="An educational platform landing page introducing programming, web development, and database courses."
+      image={null}
+      link="https://alaaahmedn7.github.io/landing-page-project/"
+    />
 
-    <div className="project-card">
-      <h3>Data Structures Implementation</h3>
-      <p>
-        A C++ project implementing fundamental
-        data structures and their main operations.
-      </p>
-      <small>C++ · Stack · Queue · Linked List</small>
-    </div>
+    <ProjectCard
+      title="Student Management System"
+      description="A C++ console application for managing student records, including adding, displaying, searching, updating, and deleting students, with grade and average calculations."
+      image={null}
+      link="https://github.com/alaaahmedn7/student-management-system"
+    />
 
-    <div className="project-card">
-      <h3>Student Management System</h3>
-      <p>
-        An individual C++ project for adding,
-        searching, updating, displaying, and deleting
-        student records.
-      </p>
-      <small>C++ · Arrays · Functions</small>
-    </div>
+    <ProjectCard
+      title="Stack Implementation"
+      description="A C++ implementation of the Stack data structure using arrays, featuring basic stack operations and additional functionality."
+      image={null}
+      link="https://github.com/alaaahmedn7/stack-implementation"
+    />
+
+    <ProjectCard
+      title="School Database Management System"
+      description="A school database project built using SQL and Oracle Database, featuring tables for students, teachers, classes, subjects, grades, and registration with relational constraints."
+      image={null}
+      link="https://github.com/alaaahmedn7/school-database-management-system-4."    />
 
   </div>
 </section>
-<section id="achievements" className="achievements">
-  <h2>Academic Achievements</h2>
-  <p className="section-subtitle">
-    Academic Excellence Through Dedication and Consistency.
+
+{/* Achievements Section */}
+<section className="achievements" id="achievements">
+  <h2>Academic <span>Achievements</span></h2>
+
+  <p className="achievements-subtitle">
+    Hard work and dedication lead to excellence.
   </p>
 
   <div className="achievements-container">
+
     <div className="achievement-card">
-      <span className="achievement-icon">🥈</span>
-      <h3>2nd Place</h3>
-      <p>Ranked 2nd among IT students.</p>
-      <span className="achievement-year">Second Academic Year</span>
+      <div className="achievement-icon">🥇</div>
+      <h3>4th Place</h3>
+      <p>First Academic Year</p>
+      <span>Ranked 4th in my class</span>
     </div>
 
     <div className="achievement-card">
-      <span className="achievement-icon">🏅</span>
-      <h3>4th Place</h3>
-      <p>Ranked 4th among IT students.</p>
-      <span className="achievement-year">First Academic Year</span>
+      <div className="achievement-icon">🥈</div>
+      <h3>2nd Place</h3>
+      <p>Second Academic Year</p>
+      <span>Ranked 2nd in my class</span>
     </div>
+
   </div>
 </section>
-{selectedCertificate && (
-  <div
-    className="certificate-modal"
-    onClick={() => setSelectedCertificate(null)}
-  >
-    <button
-      className="modal-close"
-      onClick={() => setSelectedCertificate(null)}
-    >
-      ×
-    </button>
 
-    <img
-      src={selectedCertificate}
-      alt="Certificate Preview"
-      onClick={(e) => e.stopPropagation()}
-    />
-  </div>
-)}
+
 {/* Contact Section */}
 <section className="contact" id="contact">
 
@@ -543,7 +445,7 @@ onClick={() => setSelectedCertificate(certificate2)}/>
       IT Student & Aspiring Software Engineer
     </p>
 
-   <div className="footer-social">
+  <div className="footer-social">
   <a
     href="https://github.com/Alaaahmedn1"
     target="_blank"
@@ -584,7 +486,25 @@ onClick={() => setSelectedCertificate(certificate2)}/>
           ↑
         </button>
       )}
+{selectedCertificate && (
+    <div
+        className="certificate-modal"
+        onClick={() => setSelectedCertificate(null)}
+    >
+        <button
+            className="close-certificate"
+            onClick={() => setSelectedCertificate(null)}
+        >
+            ×
+        </button>
 
+        <img
+            src={selectedCertificate}
+            alt="Certificate"
+            onClick={(e) => e.stopPropagation()}
+        />
+    </div>
+)}
     </div>
   );
 }
