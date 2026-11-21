@@ -4,7 +4,7 @@ A personal portfolio website built with React.js to showcase my skills, academic
 
 ## About the Project
 
-This portfolio introduces me, highlights my technical skills and academic achievements, and showcases the projects I have worked on. It also provides a way to contact me.
+This portfolio introduces me, highlights my technical skills and academic achievements, and showcases the projects I have worked on. It also provides visitors with a direct way to contact me.
 
 ## Features
 
@@ -14,8 +14,10 @@ This portfolio introduces me, highlights my technical skills and academic achiev
 - Skills section.
 - Education and academic achievements.
 - Certificates gallery.
-- Contact form with validation.
-- React Router for navigation.
+- Contact form with input validation.
+- React Router for navigation between pages.
+- Direct email messaging through the contact form.
+- EmailJS integration for sending visitor messages.
 
 ## Technologies Used
 
@@ -32,7 +34,8 @@ This portfolio introduces me, highlights my technical skills and academic achiev
 Clone the repository:
 
 ```bash
-git clone https://github.com/alaaahmedn7/react-portfolio.git```
+git clone https://github.com/alaaahmedn7/react-portfolio.git
+```
 
 Navigate to the project directory:
 
@@ -62,5 +65,5 @@ npm run build
 
 ## Contact
 
-Alaa Ahmed Noman  
+**Alaa Ahmed Noman**  
 Information Technology Student | Aspiring Software Engineer
